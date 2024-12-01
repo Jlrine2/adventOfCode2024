@@ -3,7 +3,7 @@ package main
 import (
 	"adventOfCode/common"
 	"fmt"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -20,8 +20,8 @@ func splitLeftRight(input string) ([]int, []int) {
 		left = append(left, l)
 		right = append(right, r)
 	}
-	sort.Ints(left)
-	sort.Ints(right)
+	slices.Sort(left)
+	slices.Sort(right)
 	return left, right
 }
 
