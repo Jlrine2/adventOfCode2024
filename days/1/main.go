@@ -3,15 +3,52 @@ package main
 import (
 	"adventOfCode/common"
 	"fmt"
+	"sort"
+	"strconv"
+	"strings"
 	"time"
 )
 
+func splitLeftRight(input string) ([]int, []int) {
+	lines := common.ToLines(input)
+	var left []int
+	var right []int
+	for _, line := range lines {
+		splits := strings.Split(line, "   ")
+		l, _ := strconv.Atoi(splits[0])
+		r, _ := strconv.Atoi(splits[1])
+		left = append(left, l)
+		right = append(right, r)
+	}
+	sort.Ints(left)
+	sort.Ints(right)
+	return left, right
+}
+
 func Part1(input string) int {
-	return 0
+	left, right := splitLeftRight(input)
+	t := 0
+	for i, a := range left {
+		d := a - right[i]
+		if d < 0 {
+			d *= -1
+		}
+		t += d
+	}
+	return t
 }
 
 func Part2(input string) int {
-	return 1
+	left, right := splitLeftRight(input)
+	t := 0
+	counts := map[int]int{}
+	for _, a := range right {
+		counts[a] = counts[a] + 1
+	}
+	for _, a := range left {
+		t += a * counts[a]
+	}
+	return t
 }
 
 func main() {

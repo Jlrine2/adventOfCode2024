@@ -2,12 +2,15 @@ package main
 
 import "testing"
 
-const testInput = `line1
-line2
-`
+const testInput = `3   4
+4   3
+2   5
+1   3
+3   9
+3   3`
 
-const p1expected = 0
-const p2expected = 1
+const p1expected = 11
+const p2expected = 31
 
 func TestPart1(t *testing.T) {
 	res := Part1(testInput)
