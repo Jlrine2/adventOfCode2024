@@ -21,3 +21,7 @@ func Ints(s string) []int {
 	}
 	return ints
 }
+
+func Log(t ...any) {
+	fmt.Println(t...)
+}
