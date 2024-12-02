@@ -4,25 +4,17 @@ import (
 	"adventOfCode/common"
 	"fmt"
 	"slices"
-	"strconv"
-	"strings"
-	"time"
 )
 
+const day = 1
+
 func splitLeftRight(input string) ([]int, []int) {
-	lines := common.ToLines(input)
-	var left []int
-	var right []int
-	for _, line := range lines {
-		splits := strings.Split(line, "   ")
-		l, _ := strconv.Atoi(splits[0])
-		r, _ := strconv.Atoi(splits[1])
-		left = append(left, l)
-		right = append(right, r)
-	}
-	slices.Sort(left)
-	slices.Sort(right)
-	return left, right
+	ints := common.Ints(input)
+	collumns := common.Unzip(ints, 2)
+	fmt.Println(collumns)
+	slices.Sort(collumns[0])
+	slices.Sort(collumns[1])
+	return collumns[0], collumns[1]
 }
 
 func Part1(input string) int {
@@ -52,14 +44,5 @@ func Part2(input string) int {
 }
 
 func main() {
-	input := common.ReadInput("days/1/input.txt")
-	p1start := time.Now()
-	Part1(input)
-	p1elapsed := time.Since(p1start)
-
-	p2start := time.Now()
-	Part2(input)
-	p2elapsed := time.Since(p2start)
-	fmt.Printf("Part1:\nsolution: %#v\ntime: %#v\n", Part1(input), p1elapsed.String())
-	fmt.Printf("Part2:\nsolution: %#v\ntime: %#v\n", Part2(input), p2elapsed.String())
+	common.AocMain(day, Part1, Part2)
 }
