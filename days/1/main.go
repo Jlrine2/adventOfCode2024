@@ -2,7 +2,6 @@ package main
 
 import (
 	"adventOfCode/common"
-	"fmt"
 	"slices"
 )
 
@@ -11,7 +10,6 @@ const day = 1
 func splitLeftRight(input string) ([]int, []int) {
 	ints := common.Ints(input)
 	collumns := common.Unzip(ints, 2)
-	fmt.Println(collumns)
 	slices.Sort(collumns[0])
 	slices.Sort(collumns[1])
 	return collumns[0], collumns[1]

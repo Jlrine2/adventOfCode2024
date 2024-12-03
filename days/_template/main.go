@@ -2,8 +2,6 @@ package main
 
 import (
 	"adventOfCode/common"
-	"fmt"
-	"time"
 )
 
 const day = 0

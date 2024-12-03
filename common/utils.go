@@ -13,7 +13,7 @@ func Must[T any](t T, err error) {
 }
 
 func Ints(s string) []int {
-	r, _ := regexp.Compile(`\d+`)
+	r, _ := regexp.Compile(`-?\d+`)
 	var ints []int
 	for _, match := range r.FindAll([]byte(s), -1) {
 		i, _ := strconv.Atoi(string(match))
