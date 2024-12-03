@@ -7,28 +7,29 @@ import (
 
 const day = 2
 
-func decreasingSafe(nums []int) bool {
-	last := nums[0]
-	for _, num := range nums[1:] {
-		if num >= last {
-			return false
-		}
-		if last-num > 3 {
-			return false
-		}
-		if last-num < 1 {
-			return false
-		}
-		last = num
-	}
-	return true
-}
-
 func isSafe(nums []int) bool {
-	a := decreasingSafe(nums)
-	slices.Reverse(nums)
-	b := decreasingSafe(nums)
-	return a || b
+	accending := nums[0] < nums[1]
+	min := nums[0] - nums[1]
+	if min < 0 {
+		min *= -1
+	}
+	max := min
+	for i := 0; i < len(nums)-1; i++ {
+		if accending != (nums[i] < nums[i+1]) {
+			return false
+		}
+		diff := nums[i+1] - nums[i]
+		if !accending {
+			diff *= -1
+		}
+		if diff < min {
+			min = diff
+		}
+		if diff > max {
+			max = diff
+		}
+	}
+	return 1 <= min && 3 >= max
 }
 
 func Part1(input string) int {
@@ -50,7 +51,7 @@ func isSafeDapener(nums []int) bool {
 	for i := 0; i < len(nums); i++ {
 		newNums := make([]int, len(nums))
 		copy(newNums, nums)
-		newNums = append(newNums[:i], newNums[i+1:]...)
+		newNums = slices.Delete(newNums, i, i+1)
 		if isSafe(newNums) {
 			return true
 		}
