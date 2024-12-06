@@ -25,7 +25,7 @@ func Part1(input string) int {
 	s := 0
 	for i, row := range grid {
 		for j, _ := range row {
-			p := common.Point{X: i, Y: j}
+			p := common.Point{X: j, Y: i}
 			for _, dir := range []string{
 				"up",
 				"down",
@@ -50,7 +50,7 @@ func Part2(input string) int {
 	s := 0
 	for i, row := range grid {
 		for j, c := range row {
-			p := common.Point{X: i, Y: j}
+			p := common.Point{X: j, Y: i}
 			if c == 'A' {
 				ul := p.Go("upleft")
 				dl := p.Go("downleft")

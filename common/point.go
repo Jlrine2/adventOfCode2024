@@ -43,5 +43,5 @@ func (p *Point) Get(grid [][]int32) (int32, bool) {
 	if p.Y < 0 || p.Y >= len(grid[p.X]) {
 		return 0, false
 	}
-	return grid[p.X][p.Y], true
+	return grid[p.Y][p.X], true
 }
