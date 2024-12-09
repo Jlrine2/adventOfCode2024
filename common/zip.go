@@ -31,3 +31,14 @@ func Unzip[T any](l []T, n int) [][]T {
 	}
 	return unzipped
 }
+
+func Pairs[T any](l []T) [][]T {
+	pairs := make([][]T, 0)
+	for i := 0; i < len(l); i++ {
+		for j := i + 1; j < len(l); j++ {
+			pair := []T{l[i], l[j]}
+			pairs = append(pairs, pair)
+		}
+	}
+	return pairs
+}

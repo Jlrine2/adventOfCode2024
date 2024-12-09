@@ -1,0 +1,33 @@
+package main
+
+import "testing"
+
+const testInput = `............
+........0...
+.....0......
+.......0....
+....0.......
+......A.....
+............
+............
+........A...
+.........A..
+............
+............`
+
+const p1expected = 14
+const p2expected = 34
+
+func TestPart1(t *testing.T) {
+	res := Part1(testInput)
+	if res != p1expected {
+		t.Errorf("Part1 = %d; want %d", res, p1expected)
+	}
+}
+
+func TestPart2(t *testing.T) {
+	res := Part2(testInput)
+	if res != p2expected {
+		t.Errorf("Part2 = %d; want %d", res, p2expected)
+	}
+}
